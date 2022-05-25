@@ -1,0 +1,6 @@
+In this folder we have all the non-code 
+- architectures
+- designs
+- instructions
+- agenda 
+- meeting minutes

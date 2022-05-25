@@ -1,0 +1,5 @@
+In this folder we have:
+
+- The frontend code
+- The smart contracts
+- The static assets like images, videos etc...
