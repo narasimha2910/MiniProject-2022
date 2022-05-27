@@ -1,0 +1,6 @@
+* NodeJS
+* MetaMask
+
+-- Install node latest from https://nodejs.org/en/
+-- Install MetaMask wallet extension from https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn?hl=en
+-- Create an account on MetaMask
