@@ -1,0 +1,33 @@
+1. Clone the repository into your local machine:
+    $ git init
+    $ git clone https://github.com/narasimha2910/MiniProject-2022.git
+
+1a. Add remote origin:
+    $ git remote add origin https://github.com/narasimha2910/MiniProject-2022.git
+    $ git remote -v // To check if the origin is added
+
+2. Install all the dependencies:
+    $ cd code
+    $ npm i
+
+3. Run the react scripts and navigate to http://localhost:3000/ :
+    $ cd code
+    $ npm start
+
+4. To create a branch:
+    $ git branch -m {BRANCH NAME}
+
+5. To change into your branch:
+    $ git checkout {BRANCH NAME}
+
+6. To stage and commit your changes to your local repo:
+    $ git add .
+    $ git commit -m "Your message"
+
+7. To push your changes to your github (IMPORTANT TO FOLLOW THE SEQUENCE):
+    $ git pull origin master
+    // At this point if there are any conflicts resolve them 
+       and commit changes again (as in step 6)
+    $ git push origin {BRANCH NAME}
+
+8. Raise a pull request to the master branch in github
