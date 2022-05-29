@@ -13,6 +13,7 @@
 
 3. Run the react scripts and navigate to http://localhost:3000/ :
     $ cd code
+    $ cd edurity
     $ npm start
 
 4. To create a branch:
