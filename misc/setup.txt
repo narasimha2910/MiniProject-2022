@@ -8,6 +8,7 @@
 
 2. Install all the dependencies:
     $ cd code
+    $ cd edurity
     $ npm i
 
 3. Run the react scripts and navigate to http://localhost:3000/ :
