@@ -1,7 +1,14 @@
 module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
-    extend: {},
+    fontFamily: {
+      display: ["Oswald"],
+    },
+    extend: {
+      backgroundImage: {
+        blockchain: "url('/src/assets/images/blck3.png')",
+      },
+    },
   },
   plugins: [],
 };
