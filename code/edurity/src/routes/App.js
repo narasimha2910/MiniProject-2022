@@ -10,6 +10,8 @@ import Upload from "../pages/Upload";
 function App() {
   const [active, setActive] = useState(1);
   return (
+   
+
     <Router>
       <div className=" bg-opacity-20 bg-blockchain bg-cover w-screen h-screen">
         <NavBar active={active} setActive={setActive} />

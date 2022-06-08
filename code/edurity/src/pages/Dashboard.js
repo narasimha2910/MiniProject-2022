@@ -1,3 +1,5 @@
+
+import Table_Dashboard from "../components/Table_Dashboard";
 import React from "react";
 import  { useEffect } from "react";
 
@@ -6,7 +8,8 @@ const Dashboard = ({ setActive }) => {
     setActive(2);
   }, [setActive]);
 
-  return <div>Dashboard</div>;
+  return <> <Table_Dashboard /> </>;
+ 
 };
 
 export default Dashboard;
