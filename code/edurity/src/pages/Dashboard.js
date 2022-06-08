@@ -1,4 +1,4 @@
-import Table_Dashboard from "../components/Table_Dashboard";
+import TableDashboard from "../components/TableDashboard";
 import React from "react";
 import { useEffect } from "react";
 
@@ -9,7 +9,7 @@ const Dashboard = ({ setActive }) => {
 
   return (
     <>
-      <Table_Dashboard />
+      <TableDashboard />
     </>
   );
 };

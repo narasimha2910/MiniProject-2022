@@ -1,4 +1,4 @@
-const Table_Dashboard = () => {
+const TableDashboard = () => {
   return (
     <div class="flex flex-col mt-8">
       <div class="py-2 -my-2 overflow-x-auto sm:-mx- sm:px-6 lg:-mx-8 lg:px-8">
@@ -210,4 +210,4 @@ const Table_Dashboard = () => {
   );
 };
 
-export default Table_Dashboard;
+export default TableDashboard;
