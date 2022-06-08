@@ -1,14 +1,15 @@
-import Footer from "../components/Footer";
-import NavBar from "../components/NavBar";
 import PolygonLogo from "../assets/logos/poly.svg";
 import { BsGithub } from "react-icons/bs";
 import { HiMail } from "react-icons/hi";
 import { MdOutlineBuildCircle } from "react-icons/md";
+import { useEffect } from "react";
 
-const Home = () => {
+const Home = ({ setActive }) => {
+  useEffect(() => {
+    setActive(1);
+  }, [setActive]);
   return (
     <>
-      <NavBar />
       <div className="font-display container mx-auto flex flex-row items-center h-[88.5vh] justify-between">
         <div className="w-1/2 px-5 text-left">
           <h1 className="text-8xl font-light mb-8">EDURITY AIMS TOWARDS</h1>
@@ -30,8 +31,6 @@ const Home = () => {
         </p>
         <img src={PolygonLogo} alt="Polygon Logo" className="w-32 h-32 p-0" />
       </div>
-
-      <Footer />
     </>
   );
 };

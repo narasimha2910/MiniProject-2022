@@ -1,18 +1,15 @@
-import Footer from "../components/Footer";
-import NavBar_dashboard from "../components/NavBar_Dashboard";
+
 import Table_Dashboard from "../components/Table_Dashboard";
+import React from "react";
+import  { useEffect } from "react";
 
+const Dashboard = ({ setActive }) => {
+  useEffect(() => {
+    setActive(2);
+  }, [setActive]);
 
-const Dashboard = () => {
-  return (
-    <>
-      <NavBar_dashboard />
-
-      <Table_Dashboard />
-
-      <Footer />
-    </>
-  );
+  return <> <Table_Dashboard /> </>;
+ 
 };
 
 export default Dashboard;
