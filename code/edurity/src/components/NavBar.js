@@ -25,7 +25,7 @@ const NavBar = ({ active, setActive }) => {
                 active === 1
                   ? "font-medium border-b-2 border-b-black"
                   : "font-light"
-              } cursor-pointer hover:text-xl duration-50`}
+              } cursor-pointer hover:mb-3 hover:duration-300`}
               onClick={() => setActive(1)}
             >
               About Us
@@ -37,7 +37,7 @@ const NavBar = ({ active, setActive }) => {
                 active === 2
                   ? "font-medium border-b-2 border-b-black"
                   : "font-light"
-              } cursor-pointer hover:text-xl duration-50`}
+              } cursor-pointer hover:mb-3 duration-300`}
               onClick={() => setActive(2)}
             >
               Dashboard
@@ -49,7 +49,7 @@ const NavBar = ({ active, setActive }) => {
                 active === 3
                   ? "font-medium border-b-2 border-b-black"
                   : "font-light"
-              } cursor-pointer hover:text-xl duration-50`}
+              } cursor-pointer hover:mb-3 duration-300`}
               onClick={() => setActive(3)}
             >
               Upload
@@ -61,7 +61,7 @@ const NavBar = ({ active, setActive }) => {
                 active === 4
                   ? "font-medium border-b-2 border-b-black"
                   : "font-light"
-              } cursor-pointer hover:text-xl duration-50`}
+              } cursor-pointer hover:mb-3 duration-300`}
               onClick={() => setActive(4)}
             >
               Search
@@ -69,7 +69,7 @@ const NavBar = ({ active, setActive }) => {
           </Link>
         </div>
         <div className="w-1/3 flex flex-row justify-center">
-          <button className="bg-black text-white p-3 font-medium rounded-full hover:text-xl duration-100 text-lg">
+          <button className="bg-black text-white p-3 font-medium rounded-full hover:text-xl duration-300 text-lg">
             Connect Wallet
           </button>
         </div>
