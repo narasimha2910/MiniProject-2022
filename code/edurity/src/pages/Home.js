@@ -4,10 +4,12 @@ import { HiMail } from "react-icons/hi";
 import { MdOutlineBuildCircle } from "react-icons/md";
 import { useEffect } from "react";
 
-const Home = ({ setActive }) => {
+const Home = ({ setActive, connectToWallet, address }) => {
   useEffect(() => {
     setActive(1);
-  }, [setActive]);
+    connectToWallet();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   return (
     <>
       <div className="font-display container mx-auto flex flex-row items-center h-[88.5vh] justify-between">

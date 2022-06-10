@@ -2,10 +2,12 @@ import { FaSearch } from "react-icons/fa";
 import React, { useEffect } from "react";
 import RecordData from "../components/RecordData";
 
-const Search = ({ setActive }) => {
+const Search = ({ setActive, connectToWallet, address }) => {
   useEffect(() => {
     setActive(4);
-  }, [setActive]);
+    connectToWallet();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <>
