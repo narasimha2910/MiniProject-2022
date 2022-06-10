@@ -44,30 +44,6 @@ const Upload = ({ setActive }) => {
             Upload
           </button>
         </div>
-
-        {/* <button className=" border-2 border-black bg-white text-black text-lg h-[3rem] w-[20rem]  font-display absolute right-[45rem] mt-[20rem] rounded-full  hover:text-xl duration-100 text-lg">
-          Choose a File..
-        </button>
-        <input
-          type="text"
-          placeholder="Enter document Name..."
-          className=" py-2 px-[9rem] border-2 border-black bg-white text-black text-xl h-[4rem] w-[30rem]  font-display absolute right-[40rem] mt-[30rem] rounded-full "
-        ></input>
-        <button
-          id="dropdownDefault"
-          data-dropdown-toggle="dropdown"
-          className=" py-2 px-7 border-2 border-black bg-white text-slate-400 text-xl h-[4rem] w-[30rem]  font-display absolute right-[40rem] mt-[35rem] rounded-full "
-        >
-          Select Type Of Document...
-        </button>
-        <input
-          type="text"
-          placeholder="Enter document identifier..."
-          className=" py-2 px-[9rem] border-2 border-black bg-white text-black text-xl h-[4rem] w-[30rem]  font-display absolute right-[40rem] mt-[40rem] rounded-full "
-        ></input>
-        <button className=" border-2 border-black bg-black text-white text-2xl h-[3rem] w-[15rem]  font-display absolute right-[48rem] mt-[46rem] rounded-full  hover:text-xl duration-100 text-lg">
-          Upload
-        </button> */}
       </div>
     </>
   );
