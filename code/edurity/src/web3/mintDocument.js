@@ -1,0 +1,24 @@
+import { ethers } from "ethers";
+import Web3Modal from "web3modal";
+import abi from "../contracts/Edurity.json";
+import CONTRACT_ADDRESS from "../contracts/Edurity";
+const mintDocument = async (uri) => {
+  const web3Modal = new Web3Modal();
+  const connection = await web3Modal.connect();
+  const provider = new ethers.providers.Web3Provider(connection);
+  const edurity = new ethers.Contract(
+    CONTRACT_ADDRESS,
+    abi,
+    provider.getSigner()
+  );
+  try {
+    const transaction = await edurity.mintDocument(uri);
+    const txn = transaction.wait();
+    console.log(transaction);
+    return txn.newDocId;
+  } catch (err) {
+    return err;
+  }
+};
+
+export default mintDocument;
