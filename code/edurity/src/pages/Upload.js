@@ -5,15 +5,17 @@ import { create as ipfsHttpClient } from "ipfs-http-client";
 import Select from "react-select";
 import { Rings } from "react-loader-spinner";
 import mintDocument from "../web3/mintDocument";
+import { db } from "../firebase.config";
+import { collection, addDoc } from "firebase/firestore";
 
 const client = ipfsHttpClient("https://ipfs.infura.io:5001");
 
 const Upload = ({ setActive, connectToWallet, address }) => {
   useEffect(() => {
     setActive(3);
-    connectToWallet();
+    if (!address) connectToWallet();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [address]);
 
   const fileRef = useRef(null);
   const [name, setName] = useState("");
@@ -48,11 +50,15 @@ const Upload = ({ setActive, connectToWallet, address }) => {
           console.log(added.path);
           metaData = `https://ipfs.infura.io/ipfs/${added.path}`;
           console.log(metaData);
-          const docID = await mintDocument(metaData);
-          console.log(docID)
+          const document = await mintDocument(metaData);
+          console.log(document);
+          await addDoc(collection(db, "documents"), document);
+          setLoading(false);
+          setChosenFile(null);
+          setDocId(null);
+          setRecType(null);
         });
-      })
-      .then(() => setLoading(false));
+      });
   };
 
   const options = [
