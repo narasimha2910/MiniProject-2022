@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { TbWallet } from "react-icons/tb";
 
 const NavBar = ({ active, setActive, address, connectToWallet }) => {
-  
   const shortenWalletAddres = (address) => {
     return (
       address.slice(0, 5) +
