@@ -13,9 +13,12 @@ const mintDocument = async (uri) => {
   );
   try {
     const transaction = await edurity.mintDocument(uri);
-    const txn = transaction.wait();
+    const txn = await transaction.wait();
     console.log(transaction);
-    return txn.newDocId;
+    return {
+      doc_id: txn.events[0].args[2].toString(),
+      txn_hash: txn.events[0].transactionHash,
+    };
   } catch (err) {
     return err;
   }
