@@ -16,23 +16,23 @@ const getRecordsOfOwner = async (owner) => {
   try {
     const transaction = await edurity.getRecordsOfOwner(owner);
     console.log(transaction);
-    const documents = [];
+    let documents = [];
     transaction.forEach(async (txn) => {
       const uri = await edurity.tokenURI(txn.toString());
       const metaData = await fetch(uri).then((data) => data.json());
       const status = await edurity.getStatus(txn.toString());
       const q = query(collection(db, "documents"), where("doc_id", "==", "8"));
       const querySnapshot = await getDocs(q);
-      let txnHash = ""
-      querySnapshot.forEach((doc) => txnHash = doc.data().txn_hash);
+      let txnHash = "";
+      querySnapshot.forEach((doc) => (txnHash = doc.data().txn_hash));
       documents.push({
         docId: txn.toString(),
         metaData,
         status: status.toString(),
-        txnHash
+        txnHash,
       });
     });
-    return documents;
+    return { documents };
   } catch (err) {
     return err;
   }

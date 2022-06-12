@@ -1,9 +1,17 @@
+import { useEffect } from "react";
 import RecordData from "./RecordData";
-const records = [
-  1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 11, 23, 44, 55, 66, 77, 88, 99, 109, 99,
-];
 
-const TableDashboard = () => {
+const statusEnum = {
+  0: "PENDING",
+  1: "VERIFIED",
+  2: "REJECTED",
+};
+
+const TableDashboard = ({ docus, forceUpdate }) => {
+  useEffect(() => {
+    forceUpdate();
+    console.log("Table rerender");
+  }, [forceUpdate, docus]);
   return (
     <div className="font-display flex flex-col justify-start">
       {/* Headings */}
@@ -15,12 +23,14 @@ const TableDashboard = () => {
       </div>
       {/* Records */}
       <div className="overflow-y-scroll h-[75vh] mt-5">
-        {records.map((rec) => (
+        {docus.map((rec) => (
           <RecordData
-            docId={1}
-            docName={"SSLC Marks Card"}
-            status={"VERIFIED"}
-            txnHash={"0x12345678..."}
+            key={rec.docId}
+            docId={rec.docId}
+            docName={rec.metaData.name}
+            status={statusEnum[rec.status]}
+            txnHash={rec.txnHash}
+            recView={rec.metaData.image}
             isDelete={true}
           />
         ))}

@@ -91,6 +91,7 @@ const NavBar = ({ active, setActive, address, connectToWallet }) => {
             </button>
           )}
         </div>
+        
       </div>
     </div>
   );
