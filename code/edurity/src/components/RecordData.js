@@ -12,9 +12,9 @@ const shortenTxnHash = (address) => {
 };
 
 const RecordData = ({ docName, txnHash, status, docId, isDelete, recView }) => {
-  useEffect(() => {
-    console.log("Record");
-  }, []);
+  // useEffect(() => {
+  //   console.log("Record");
+  // }, []);
   return (
     <div className="flex flex-row justify-between items-center text-center text-lg bg-white py-2 border-[1px] text-gray-700 border-gray-300 mt-4 w-full">
       <p className="w-1/4 pr-8">{docName}</p>
