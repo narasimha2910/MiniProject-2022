@@ -44,7 +44,7 @@ const Dashboard = ({ setActive, connectToWallet, address, docs }) => {
   return (
     <div className="w-screen">
       <div className="mt-2 text-white flex justify-center items-center">
-        <button
+        {/* <button
           onClick={() => {
             window.location.reload();
             window.location.href = "/";
@@ -52,7 +52,7 @@ const Dashboard = ({ setActive, connectToWallet, address, docs }) => {
           className="bg-black p-1 rounded-md"
         >
           Reload
-        </button>
+        </button> */}
       </div>
       {docus && (
         <div className="font-display flex flex-col justify-start">
