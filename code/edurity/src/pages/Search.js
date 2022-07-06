@@ -1,11 +1,17 @@
 import { FaSearch } from "react-icons/fa";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import RecordData from "../components/RecordData";
+import { ethers } from "ethers";
+import Web3Modal from "web3modal";
+import abi from "../contracts/Edurity.json";
+import CONTRACT_ADDRESS from "../contracts/Edurity";
 
 const Search = ({ setActive, connectToWallet, address }) => {
+  const [recId, setRecId] = useState(null);
+  const [res, setRes] = useState([]);
   useEffect(() => {
     setActive(4);
-    connectToWallet();
+    // connectToWallet();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -21,18 +27,45 @@ const Search = ({ setActive, connectToWallet, address }) => {
             <input
               type="text"
               placeholder="Txn ID / Document ID / Contract Address ..."
-              value={"0x12345678..."}
+              value={recId}
+              onChange={(e) => setRecId(e.target.value)}
               className="border-2 border-black bg-white text-black text-2xl rounded-full w-full focus:outline-none px-5 py-2"
             ></input>
-            <FaSearch className="h-5 w-5 absolute text-black cursor-pointer top-4 right-5" />
+            <FaSearch
+              className="h-5 w-5 absolute text-black cursor-pointer top-4 right-5"
+              onClick={async () => {
+                const web3Modal = new Web3Modal();
+                const connection = await web3Modal.connect();
+                const provider = new ethers.providers.Web3Provider(connection);
+                const edurity = new ethers.Contract(
+                  CONTRACT_ADDRESS,
+                  abi,
+                  provider.getSigner()
+                );
+                try {
+                  const txn = await edurity.getRecord(recId);
+                  console.log(txn);
+                  const fileId = txn.fileId.toString();
+                  const uri = await edurity.tokenURI(fileId);
+                  const metaData = await fetch(uri).then((data) => data.json());
+                  const status = await edurity.getStatus(fileId).then((stat) => stat.toString());
+                  console.log(status);
+                  const rec = [{ fileId, uri, metaData, status }];
+                  setRes(rec);
+                } catch (e) {
+                  console.error(e);
+                }
+              }}
+            />
           </div>
           <div className="w-3/4 px-5 mt-36">
-            <RecordData
+            {/* <RecordData
               docName={"SSLC record"}
               docId={2}
               status={"PENDING"}
               txnHash={"0x12345678..."}
-            />
+            /> */}
+            {res && res.map((r) => <div>{r.status}</div>)}
           </div>
         </div>
       </div>

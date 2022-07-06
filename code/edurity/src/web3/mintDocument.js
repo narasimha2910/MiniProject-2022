@@ -18,6 +18,7 @@ const mintDocument = async (uri) => {
     return {
       doc_id: txn.events[0].args[2].toString(),
       txn_hash: txn.events[0].transactionHash,
+      status: 0
     };
   } catch (err) {
     return err;
