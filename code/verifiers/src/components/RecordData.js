@@ -1,7 +1,8 @@
-import React, { useEffect } from "react";
 import { HiLink } from "react-icons/hi";
-import { TbTrash } from "react-icons/tb";
 import { BsEyeFill } from "react-icons/bs";
+import { TiTick } from "react-icons/ti";
+import { ImCross } from "react-icons/im";
+import verifyRecord from "../web3/verifyRecord";
 
 const shortenTxnHash = (address) => {
   return (
@@ -11,41 +12,20 @@ const shortenTxnHash = (address) => {
   );
 };
 
-const RecordData = ({ docName, txnHash, status, docId, isDelete, recView }) => {
-  // useEffect(() => {
-  //   console.log("Record");
-  // }, []);
+const RecordData = ({ owner, status, docId, recView, metaUrl }) => {
   return (
     <div className="flex flex-row justify-between items-center text-center text-lg bg-white py-2 border-[1px] text-gray-700 border-gray-300 mt-4 w-full">
-      <p className="w-1/4 pr-8">{docName}</p>
-      <p className="w-1/4">{shortenTxnHash(txnHash)}</p>
-      <p className="w-1/4 pl-12 ">
-        <span
-          className={`${
-            status === "VERIFIED"
-              ? "bg-green-300"
-              : status === "PENDING"
-              ? "bg-yellow-300"
-              : "bg-red-300"
-          } px-4 rounded-full`}
-        >
-          {status}
-        </span>
-      </p>
-      <div className="flex flex-row items-center justify-between w-1/4 pl-24 pr-20 text-2xl text-gray-700">
+      <p className="w-1/3 pr-8">{docId}</p>
+      <p className="w-1/3">{shortenTxnHash(owner)}</p>
+      <div className="flex flex-row items-center justify-between w-1/3 pl-24 pr-20 text-2xl text-gray-700">
         <a
           className="cursor-pointer"
-          href={`https://mumbai.polygonscan.com/tx/${txnHash}`}
+          href={metaUrl}
           target="_blank"
           rel="noopener noreferrer"
         >
           <HiLink />
         </a>
-        {isDelete && (
-          <p className="cursor-pointer">
-            <TbTrash />
-          </p>
-        )}
         <a
           className="cursor-pointer"
           href={recView}
@@ -54,6 +34,22 @@ const RecordData = ({ docName, txnHash, status, docId, isDelete, recView }) => {
         >
           <BsEyeFill />
         </a>
+        <div
+          className="cursor-pointer"
+          onClick={async () => {
+            await verifyRecord(docId, 1);
+          }}
+        >
+          <TiTick />
+        </div>
+        <div
+          className="cursor-pointer text-lg"
+          onClick={async () => {
+            await verifyRecord(docId, 2);
+          }}
+        >
+          <ImCross />
+        </div>
       </div>
     </div>
   );
