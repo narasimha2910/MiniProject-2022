@@ -5,6 +5,12 @@ import { ethers } from "ethers";
 import Web3Modal from "web3modal";
 import abi from "../contracts/Edurity.json";
 import CONTRACT_ADDRESS from "../contracts/Edurity";
+import SearchResult from "../components/SearchResult";
+const statusEnum = {
+  0: "PENDING",
+  1: "VERIFIED",
+  2: "REJECTED",
+};
 
 const Search = ({ setActive, connectToWallet, address }) => {
   const [recId, setRecId] = useState(null);
@@ -46,11 +52,24 @@ const Search = ({ setActive, connectToWallet, address }) => {
                   const txn = await edurity.getRecord(recId);
                   console.log(txn);
                   const fileId = txn.fileId.toString();
+                  const owner = txn.owner
                   const uri = await edurity.tokenURI(fileId);
                   const metaData = await fetch(uri).then((data) => data.json());
-                  const status = await edurity.getStatus(fileId).then((stat) => stat.toString());
+                  const status = await edurity
+                    .getStatus(fileId)
+                    .then((stat) => stat.toString());
                   console.log(status);
-                  const rec = [{ fileId, uri, metaData, status }];
+                  console.log(metaData);
+                  const rec = [
+                    {
+                      fileId,
+                      uri,
+                      owner,
+                      name: metaData.name,
+                      status,
+                      image: metaData.image,
+                    },
+                  ];
                   setRes(rec);
                 } catch (e) {
                   console.error(e);
@@ -58,14 +77,25 @@ const Search = ({ setActive, connectToWallet, address }) => {
               }}
             />
           </div>
-          <div className="w-3/4 px-5 mt-36">
+          <div className="px-5 mt-16 w-5/6">
             {/* <RecordData
               docName={"SSLC record"}
               docId={2}
               status={"PENDING"}
               txnHash={"0x12345678..."}
             /> */}
-            {res && res.map((r) => <div>{r.status}</div>)}
+            {res &&
+              res.map((r, idx) => (
+                <RecordData
+                  docName={r.name}
+                  docId={r.fileId}
+                  status={statusEnum[r.status]}
+                  owner={r.owner}
+                  recView={r.image}
+                  key={r.fileId}
+                  metaUri={r.uri}
+                />
+              ))}
           </div>
         </div>
       </div>

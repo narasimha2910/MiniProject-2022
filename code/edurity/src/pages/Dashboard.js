@@ -44,7 +44,7 @@ const Dashboard = ({ setActive, connectToWallet, address, docs }) => {
   return (
     <div className="w-screen">
       <div className="mt-2 text-white flex justify-center items-center">
-        {/* <button
+        <button
           onClick={() => {
             window.location.reload();
             window.location.href = "/";
@@ -52,7 +52,7 @@ const Dashboard = ({ setActive, connectToWallet, address, docs }) => {
           className="bg-black p-1 rounded-md"
         >
           Reload
-        </button> */}
+        </button>
       </div>
       {docus && (
         <div className="font-display flex flex-col justify-start">
@@ -64,7 +64,7 @@ const Dashboard = ({ setActive, connectToWallet, address, docs }) => {
             <p>ACTIONS</p>
           </div>
           {/* Records */}
-          <div className="overflow-y-scroll h-[75vh] mt-5">
+          <div className="overflow-y-scroll h-[60vh] mt-5">
             {docus &&
               docus.map((rec) => (
                 <RecordData
@@ -74,7 +74,6 @@ const Dashboard = ({ setActive, connectToWallet, address, docs }) => {
                   status={statusEnum[rec.status]}
                   txnHash={rec.txnHash}
                   recView={rec.metaData.image}
-                  isDelete={true}
                 />
               ))}
           </div>
