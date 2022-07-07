@@ -1,5 +1,6 @@
 import EdurityLogo from "../assets/logos/edurity_logo.svg";
 import { TbWallet } from "react-icons/tb";
+import { Link } from "react-router-dom";
 
 const NavBar = ({ active, setActive, address, connectToWallet }) => {
   const shortenWalletAddres = (address) => {
@@ -12,13 +13,11 @@ const NavBar = ({ active, setActive, address, connectToWallet }) => {
   return (
     <div className="h-20 bg-white shadow-md flex flex-row justify-between ">
       {/* Logo */}
+
       <div className="w-1/3 cursor-pointer">
-        <img
-          src={EdurityLogo}
-          alt="Edurity Logo"
-          className="h-full"
-          onClick={() => setActive(1)}
-        />
+        <Link to="/">
+          <img src={EdurityLogo} alt="Edurity Logo" className="h-full" />
+        </Link>
       </div>
       <div className="text-4xl flex items-center">Verifiers Dashboard</div>
       {/* Nav Links */}
@@ -32,9 +31,12 @@ const NavBar = ({ active, setActive, address, connectToWallet }) => {
         ) : (
           <button
             className="bg-black text-white px-4 rounded-full duration-300 text-2xl h-16"
-            onClick={connectToWallet}
+            onClick={() => {
+              window.location.reload();
+              window.location.href = "/";
+            }}
           >
-            Connect Wallet
+            Reload
           </button>
         )}
       </div>

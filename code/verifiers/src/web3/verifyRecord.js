@@ -18,7 +18,9 @@ const verifyRecord = async (docId, status) => {
   try {
     const transaction = await edurity.verifyDocument(docId, status);
     const txn = await transaction.wait();
+    console.log(txn);
     await updateDoc(collection(db, "documents"), { status });
+    console.log("Done");
   } catch (err) {
     return err;
   }
